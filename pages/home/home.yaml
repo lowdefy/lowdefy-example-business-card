@@ -1,0 +1,18 @@
+id: home
+type: PageHeaderMenu
+blocks:
+  - id: login_button
+    type: Button
+    properties:
+      size: large
+      title: Login with LinkedIn
+      icon: AiFillLinkedin
+      block: true
+      type: default
+    events:
+      onClick:
+        - id: login
+          type: Login
+          params:
+            callbackUrl:
+              pageId: my-profile

@@ -1,0 +1,42 @@
+lowdefy: 4.0.0-alpha.13
+
+config:
+  homePageId: home
+  theme:
+    lessVariables:
+      '@primary-color': '#438ef7'
+      '@border-radius-base': 6px
+      '@border-radius-sm': 4px
+
+auth:
+  theme:
+    colorScheme: light
+  providers:
+    - id: linkedin
+      type: LinkedInProvider
+      properties:
+        clientId:
+          _secret: LINKEDIN_CLIENT_ID
+        clientSecret:
+          _secret: LINKEDIN_CLIENT_SECRET
+  pages:
+    protected:
+      - my-profile
+      - logout
+
+menus:
+  - id: default
+    links:
+      - id: logout
+        type: MenuLink
+        pageId: logout
+        properties:
+          title: Logout
+          icon: AiOutlineLogout
+
+pages:
+  - _ref: pages/404/404.yaml
+  - _ref: pages/home/home.yaml
+  - _ref: pages/logout/logout.yaml
+  - _ref: pages/my-profile/my-profile.yaml
+  - _ref: pages/profile/profile.yaml

@@ -1,0 +1,14 @@
+id: logout
+type: Box
+events:
+  onMount:
+    - id: logout
+      type: Logout
+      skip:
+        _eq:
+          - _user: sub
+          - null
+    - id: link_home
+      type: Link
+      params:
+        home: true
