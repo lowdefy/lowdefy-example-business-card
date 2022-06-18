@@ -8,21 +8,42 @@ config:
       '@border-radius-base': 6px
       '@border-radius-sm': 4px
 
-auth:
-  theme:
-    colorScheme: light
-  providers:
-    - id: linkedin
-      type: LinkedInProvider
-      properties:
-        clientId:
-          _secret: LINKEDIN_CLIENT_ID
-        clientSecret:
-          _secret: LINKEDIN_CLIENT_SECRET
-  pages:
-    protected:
-      - my-profile
-      - logout
+# plugins:
+#   - name: '@lowdefy/plugin-business-cards'
+#     version: 'file:./plugins/plugin-business-cards'
+
+# auth:
+#   theme:
+#     colorScheme: light
+#   callbacks:
+#     - id: jwt_callback
+#       type: BusinessCardsJWTCallback
+#       properties:
+#         databaseUri:
+#           _secret: MONGODB_URI
+#     - id: session_callback
+#       type: BusinessCardsSessionCallback
+#   providers:
+#     - id: linkedin
+#       type: LinkedInProvider
+#       properties:
+#         clientId:
+#           _secret: LINKEDIN_CLIENT_ID
+#         clientSecret:
+#           _secret: LINKEDIN_CLIENT_SECRET
+#   pages:
+#     protected:
+#       - my-profile
+#       - logout
+
+connections:
+  - id: users
+    type: MongoDBCollection
+    properties:
+      collection: users
+      databaseUri:
+        _secret: MONGODB_URI
+      write: true
 
 menus:
   - id: default
