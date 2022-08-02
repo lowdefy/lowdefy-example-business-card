@@ -14,6 +14,7 @@
   "type": "module",
   "exports": {
     "./auth/adapters": "./dist/auth/adapters.js",
+    "./blocks": "./dist/blocks.js",
     "./types": "./dist/types.js"
   },
   "files": [
