@@ -15,6 +15,9 @@ plugins:
 auth:
   theme:
     colorScheme: light
+  userFields:
+    profile_id: user.profile_id
+    profile: user.profile
   adapter:
     id: mdb_adapter
     type: MongoDBAdapter
@@ -30,9 +33,10 @@ auth:
         clientSecret:
           _secret: LINKEDIN_CLIENT_SECRET
   pages:
-    protected:
-      - my-profile
-      - logout
+    public:
+      - profile
+      - login
+      - '404'
 
 connections:
   - id: users
@@ -56,6 +60,9 @@ menus:
 pages:
   - _ref: pages/404/404.yaml
   - _ref: pages/home/home.yaml
+  - _ref: pages/login/login.yaml
+  - _ref: pages/login-callback/login-callback.yaml
   - _ref: pages/logout/logout.yaml
   - _ref: pages/my-profile/my-profile.yaml
   - _ref: pages/profile/profile.yaml
+  - _ref: pages/sign-up/sign-up.yaml

@@ -28,8 +28,8 @@
     "swc": "swc src --out-dir dist --delete-dir-on-start && yarn copyfiles"
   },
   "dependencies": {
-    "@lowdefy/block-utils": "4.0.0-alpha.22",
-    "@lowdefy/helpers": "4.0.0-alpha.22",
+    "@lowdefy/block-utils": "~4.0.0-alpha.22",
+    "@lowdefy/helpers": "~4.0.0-alpha.22",
     "mongodb": "4.6.0",
     "qrcode.react": "3.1.0",
     "react": "18.1.0",

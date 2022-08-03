@@ -1,0 +1,21 @@
+id: login-callback
+type: Box
+events:
+  onMount:
+    - id: link_to_sign_up
+      type: Link
+      skip:
+        _not:
+          _not:
+            _user: profile.signed_up
+      params:
+        # TODO: pass profile_id
+        pageId: sign-up
+    # # TODO: link to original profile
+    - id: link_home
+      type: Link
+      skip:
+        _not:
+          _user: profile.signed_up
+      params:
+        home: true

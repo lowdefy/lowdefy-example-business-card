@@ -5,11 +5,11 @@ events:
     - id: not_logged_in_redirect
       type: Link
       skip:
-        _ne:
-          - _user: sub
-          - null
+        _not:
+          _not:
+            _user: true
       params:
-        home: true
+        pageId: login
 properties:
   status: 404
   title: '404'
