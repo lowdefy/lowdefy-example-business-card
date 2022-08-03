@@ -1,0 +1,12 @@
+id: count_users
+type: MongoDBAggregation
+connectionId: users
+properties:
+  options:
+    allowDiskUse: true
+    readPreference: secondaryPreferred
+  pipeline:
+    - $group:
+        _id: 0
+        total:
+          $sum: 1
