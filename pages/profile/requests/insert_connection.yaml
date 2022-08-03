@@ -1,0 +1,18 @@
+id: insert_connection
+type: MongoDBInsertOne
+connectionId: connections
+payload:
+  pid:
+    _url_query: pid
+  session_id:
+    _global: session_id
+properties:
+  doc:
+    from_user:
+      _user: profile_id
+    to_user:
+      _payload: pid
+    session_id:
+      _payload: session_id
+    timestamp:
+      _date: now

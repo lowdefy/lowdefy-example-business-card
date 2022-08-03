@@ -42,6 +42,13 @@ auth:
       - '404'
 
 connections:
+  - id: connections
+    type: MongoDBCollection
+    properties:
+      collection: connections
+      databaseUri:
+        _secret: MONGODB_URI
+      write: true
   - id: users
     type: MongoDBCollection
     properties:
