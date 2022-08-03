@@ -32,4 +32,8 @@ _ref:
           flex: 0 1 auto
         properties:
           size: 200
-          value: https://www.npmjs.com/package/qrcode.react
+          value:
+            _string.concat:
+              - _build.env: NEXTAUTH_URL
+              - '?pid='
+              - _user: profile_id
