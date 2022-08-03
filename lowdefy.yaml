@@ -7,10 +7,12 @@ config:
       '@primary-color': '#438ef7'
       '@border-radius-base': 6px
       '@border-radius-sm': 4px
+      '@border-color-base': '#69c0ff'
+      'border-width-base': 2px
 
 plugins:
   - name: '@lowdefy/plugin-business-cards'
-    version: 'portal:/Users/sam/Developer/lowdefy/lowdefy-example-business-card/plugins/plugin-business-cards'
+    version: 'file:./plugins/plugin-business-cards'
 
 auth:
   theme:
@@ -51,6 +53,12 @@ connections:
 menus:
   - id: default
     links:
+      - id: edit-profile
+        type: MenuLink
+        pageId: edit-profile
+        properties:
+          title: Edit Profile
+          icon: AiOutlineUser
       - id: logout
         type: MenuLink
         pageId: logout
@@ -64,5 +72,6 @@ pages:
   - _ref: pages/login/login.yaml
   - _ref: pages/login-callback/login-callback.yaml
   - _ref: pages/logout/logout.yaml
+  - _ref: pages/edit-profile/edit-profile.yaml
   - _ref: pages/profile/profile.yaml
   - _ref: pages/sign-up/sign-up.yaml
