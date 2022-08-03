@@ -1,9 +1,10 @@
 import React from 'react';
-import { QRCodeSVG } from 'qrcode.react';
+// Using deprecated import because import does not work properly with es modules
+import QRCode from 'qrcode.react';
 import { blockDefaultProps } from '@lowdefy/block-utils';
 
-const QRCode = ({ properties }) => (
-  <QRCodeSVG
+const QRCodeBlock = ({ properties }) => (
+  <QRCode
     bgColor={properties.bgColor}
     fgColor={properties.fgColor}
     imageSettings={properties.imageSettings}
@@ -11,14 +12,15 @@ const QRCode = ({ properties }) => (
     level={properties.level}
     size={properties.size}
     value={properties.value}
+    renderAs={properties.renderAs ?? 'svg'}
   />
 );
 
-QRCode.defaultProps = blockDefaultProps;
-QRCode.meta = {
+QRCodeBlock.defaultProps = blockDefaultProps;
+QRCodeBlock.meta = {
   category: 'display',
   icons: [],
   styles: [],
 };
 
-export default QRCode;
+export default QRCodeBlock;
