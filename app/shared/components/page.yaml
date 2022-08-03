@@ -1,9 +1,6 @@
 id:
   _var: id
 type: Box
-# layout:
-# contentJustify: center
-# contentGutter: 20
 style:
   maxWidth: 600
   margin: auto
@@ -21,7 +18,10 @@ blocks:
     style:
       backgroundColor:
         _if_none:
-          - _state: profile.color
+          - _var:
+              name: color
+              default:
+                _user: profile.color
           - '#438ef7'
       height: 160
       marginBottom: -160
@@ -29,7 +29,7 @@ blocks:
     type: Button
     style:
       textAlign: right
-      marginRight: 20
+      padding: 20
       marginBottom: -35
     properties:
       hideTitle: true
@@ -45,10 +45,8 @@ blocks:
             method: toggleOpen
   - id: content
     type: Box
-    # layout:
-    # contentGutter: 20
-    # style:
-    # margin: 0 40px
+    style:
+      padding: 0 20px
     blocks:
       _var:
         name: blocks
@@ -58,9 +56,11 @@ blocks:
     type: Html
     style:
       textAlign: center
-      marginTop: 30
+      margin: 30px 0
     properties:
-      html: <a href="https://lowdefy.com">Made with 💙 and Lowdefy</a>
+      html: |
+        <a href="https://lowdefy.com">Made with 💙 and Lowdefy</a><br/>
+        <a href="https://github.com/lowdefy/lowdefy-example-business-card">See the source config</a>
 
   - id: menu_drawer
     type: Drawer

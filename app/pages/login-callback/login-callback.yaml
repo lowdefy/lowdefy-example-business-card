@@ -2,6 +2,7 @@ id: login-callback
 type: Box
 events:
   onMount:
+    - _ref: shared/set_session_id.yaml
     - id: link_to_sign_up
       type: Link
       skip:

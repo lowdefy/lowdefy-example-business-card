@@ -2,6 +2,8 @@ _ref:
   path: shared/components/page.yaml
   vars:
     id: edit-profile
+    color:
+      _state: profile.color
     requests:
       - _ref: shared/requests/update_profile.yaml
       - _ref: shared/requests/get_user_profile.yaml
@@ -20,39 +22,47 @@ _ref:
           path: shared/components/profile_form.yaml
           vars:
             title: Welcome
-      - id: cancel_btn
-        type: Button
+      - id: buttons
+        type: Box
         layout:
-          span: 12
-          sm:
-            span: 12
-        properties:
-          title: Cancel
-          icon: AiOutlineLeft
-          block: true
-          type: default
-        events:
-          onClick:
-            - id: back
-              type: Link
-              params:
-                back: true
-      - id: save_btn
-        type: Button
-        layout:
-          span: 12
-          sm:
-            span: 12
-        properties:
-          title: Save
-          icon: AiOutlineSave
-          block: true
-        events:
-          onClick:
-            - id: update_profile
-              type: Request
-              params: update_profile
-            - id: back
-              type: Link
-              params:
-                back: true
+          contentGutter: 16
+        blocks:
+          - id: cancel_btn
+            type: Button
+            layout:
+              span: 12
+              sm:
+                span: 12
+            properties:
+              title: Cancel
+              icon: AiOutlineLeft
+              block: true
+              type: default
+              size: large
+            events:
+              onClick:
+                - id: back
+                  type: Link
+                  params:
+                    back: true
+          - id: save_btn
+            type: Button
+            layout:
+              span: 12
+              sm:
+                span: 12
+            properties:
+              title: Save
+              icon: AiOutlineSave
+              block: true
+              size: large
+            events:
+              onClick:
+                - id: update_profile
+                  type: Request
+                  params: update_profile
+                - id: back
+                  type: Login
+                  params:
+                    callbackUrl:
+                      home: true
