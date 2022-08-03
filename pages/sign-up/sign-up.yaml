@@ -1,2 +1,17 @@
 id: sign-up
 type: PageHeaderMenu
+layout:
+  contentJustify: center
+  contentGutter: 20
+properties:
+  content:
+    style:
+      backgroundColor: '#fff'
+blocks:
+  - id: profile.name
+    type: TextInput
+  - id: sign_up_button
+    type: Button
+    properties:
+      title: Sign Up
+      block: true

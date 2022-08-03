@@ -16,7 +16,7 @@ blocks:
       size: 100
       shape: square
       src:
-        _user: picture
+        _user: profile.picture
   - id: profile_description
     type: Html
     style:
