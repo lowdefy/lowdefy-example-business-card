@@ -9,7 +9,6 @@ _ref:
           flex: 0 1 auto
         properties:
           size: 100
-          shape: square
           src:
             _user: profile.picture
       - id: profile_description

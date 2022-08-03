@@ -9,6 +9,24 @@ properties:
       _user: profile_id
   update:
     $set:
+      profile.signed_up: true
       profile.name:
         _payload: name
-      profile.signed_up: true
+      profile.color:
+        _payload: color
+      profile.company:
+        _payload: company
+      profile.website:
+        _payload: website
+      profile.email:
+        _payload: email
+      profile.phone_number:
+        _payload: phone_number
+      profile.linkedin:
+        _payload: linkedin
+      profile.twitter:
+        _payload: twitter
+      profile.github:
+        _payload: github
+      profile.instagram:
+        _payload: instagram

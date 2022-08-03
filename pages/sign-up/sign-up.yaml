@@ -1,25 +1,45 @@
-_ref:
-  path: shared/components/page.yaml
-  vars:
-    id: sign-up
-    requests:
-      - _ref: shared/requests/update_profile.yaml
-    events:
-      onMount:
-        - id: link_home
-          type: Link
-          skip:
-            _not:
-              _user: profile.signed_up
-          params:
-            pageId: home
-        - id: set_state
-          type: SetState
-          params:
-            profile:
-              _user: profile
+id: sign-up
+type: Box
+requests:
+  - _ref: shared/requests/update_profile.yaml
+events:
+  onMount:
+    - id: link_home
+      type: Link
+      skip:
+        _not:
+          _user: profile.signed_up
+      params:
+        pageId: home
+    - id: set_state
+      type: SetState
+      params:
+        profile:
+          _user: profile
+
+blocks:
+  - id: color_backdrop
+    type: Box
+    style:
+      backgroundColor:
+        _if_none:
+          - _state: profile.color
+          - '#438ef7'
+      height: 100
+      marginBottom: -100
+  - id: content_box
+    type: Box
+    style:
+      maxWidth: 600
+      padding: 50px 20px
+    layout:
+      contentJustify: center
+      contentGutter: 20
     blocks:
-      - _ref: shared/components/profile_form.yaml
+      - _ref:
+          path: shared/components/profile_form.yaml
+          vars:
+            title: Welcome
       - id: sign_up_button
         type: Button
         properties:

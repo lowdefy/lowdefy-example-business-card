@@ -15,7 +15,6 @@ blocks:
       flex: 0 1 auto
     properties:
       size: 100
-      shape: square
       src:
         _request: fetch_profile.0.picture
   - id: profile_description

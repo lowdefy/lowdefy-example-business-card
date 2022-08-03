@@ -16,7 +16,10 @@ _ref:
             profile:
               _request: get_user_profile.profile
     blocks:
-      - _ref: shared/components/profile_form.yaml
+      - _ref:
+          path: shared/components/profile_form.yaml
+          vars:
+            title: Welcome
       - id: cancel_btn
         type: Button
         layout:

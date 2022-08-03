@@ -1,18 +1,12 @@
 id:
   _var: id
-type: PageHeaderMenu
-layout:
-  contentJustify: center
-  contentGutter: 20
-properties:
-  logo:
-    style:
-      width: 0
-  content:
-    style:
-      backgroundColor: '#fff'
-      maxWidth: 600
-      margin: auto
+type: Box
+# layout:
+# contentJustify: center
+# contentGutter: 20
+style:
+  maxWidth: 600
+  margin: auto
 requests:
   _var:
     name: requests
@@ -22,15 +16,44 @@ events:
     name: events
     default: {}
 blocks:
+  - id: color_backdrop
+    type: Box
+    style:
+      backgroundColor:
+        _if_none:
+          - _state: profile.color
+          - '#438ef7'
+      height: 160
+      marginBottom: -160
+  - id: menu_button
+    type: Button
+    style:
+      textAlign: right
+      marginRight: 20
+      marginBottom: -35
+    properties:
+      hideTitle: true
+      icon: AiOutlineMenu
+      type: default
+      size: large
+    events:
+      onClick:
+        - id: toggle_menu
+          type: CallMethod
+          params:
+            blockId: menu_drawer
+            method: toggleOpen
   - id: content
     type: Box
-    layout:
-      contentJustify: center
-      contentGutter: 20
+    # layout:
+    # contentGutter: 20
+    # style:
+    # margin: 0 40px
     blocks:
       _var:
         name: blocks
         default: []
+
   - id: footer
     type: Html
     style:
@@ -38,3 +61,15 @@ blocks:
       marginTop: 30
     properties:
       html: <a href="https://lowdefy.com">Made with 💙 and Lowdefy</a>
+
+  - id: menu_drawer
+    type: Drawer
+    properties:
+      width: 300
+      bodyStyle:
+        padding: 30px 0
+    blocks:
+      - id: menu
+        type: Menu
+        properties:
+          theme: light

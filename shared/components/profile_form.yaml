@@ -11,6 +11,11 @@ blocks:
       size: 100
       src:
         _user: profile.picture
+  - id: divide_social
+    type: Divider
+    properties:
+      title:
+        _var: title
   - id: profile.name
     type: TextInput
     required: true
@@ -18,6 +23,13 @@ blocks:
       title: Name & Surname
       placeholder: 'Dwight Schrute'
       size: large
+  - id: profile.color
+    type: ColorSelector
+    required: true
+    properties:
+      title: Favourite Color
+      size: large
+      undefinedColor: '#438ef7'
   - id: profile.company
     type: TextInput
     properties:
