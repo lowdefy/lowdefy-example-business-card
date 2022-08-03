@@ -1,46 +1,35 @@
-id: home
-type: PageHeaderMenu
-layout:
-  contentJustify: center
-  contentGutter: 20
-properties:
-  content:
-    style:
-      backgroundColor: '#fff'
-blocks:
-  - id: avatar
-    type: Avatar
-    layout:
-      flex: 0 1 auto
-    properties:
-      size: 100
-      shape: square
-      src:
-        _user: profile.picture
-  - id: profile_description
-    type: Html
-    style:
-      textAlign: center
-    properties:
-      html:
-        _nunjucks:
-          template: |
-            <h1>{{ name }}</h1>
-            <h2>{{ company }}</h2>
-            <h4>{{ email }}</h4>
-            <h4>{{ phone_number }}</h4>
-          on:
-            _user: profile
-  - id: qr_code
-    type: QRCode
-    layout:
-      flex: 0 1 auto
-    properties:
-      size: 200
-      value: https://www.npmjs.com/package/qrcode.react
-  - id: footer
-    type: Html
-    style:
-      textAlign: center
-    properties:
-      html: <a href="https://lowdefy.com">Made with Lowdefy</a>
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: home
+    blocks:
+      - id: avatar
+        type: Avatar
+        layout:
+          flex: 0 1 auto
+        properties:
+          size: 100
+          shape: square
+          src:
+            _user: profile.picture
+      - id: profile_description
+        type: Html
+        style:
+          textAlign: center
+        properties:
+          html:
+            _nunjucks:
+              template: |
+                <h1>{{ name }}</h1>
+                <h2>{{ company }}</h2>
+                <h4>{{ email }}</h4>
+                <h4>{{ phone_number }}</h4>
+              on:
+                _user: profile
+      - id: qr_code
+        type: QRCode
+        layout:
+          flex: 0 1 auto
+        properties:
+          size: 200
+          value: https://www.npmjs.com/package/qrcode.react

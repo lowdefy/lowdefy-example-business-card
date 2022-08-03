@@ -7,6 +7,8 @@ config:
       '@primary-color': '#438ef7'
       '@border-radius-base': 6px
       '@border-radius-sm': 4px
+      '@border-color-base': '#69c0ff'
+      'border-width-base': 2px
 
 plugins:
   - name: '@lowdefy/plugin-business-cards'
@@ -51,6 +53,12 @@ connections:
 menus:
   - id: default
     links:
+      - id: edit-profile
+        type: MenuLink
+        pageId: edit-profile
+        properties:
+          title: Edit Profile
+          icon: AiOutlineUser
       - id: logout
         type: MenuLink
         pageId: logout

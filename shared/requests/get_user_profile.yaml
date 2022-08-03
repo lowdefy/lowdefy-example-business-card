@@ -1,0 +1,7 @@
+id: get_user_profile
+type: MongoDBFindOne
+connectionId: users
+properties:
+  query:
+    profile_id:
+      _user: profile_id

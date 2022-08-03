@@ -1,0 +1,55 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: edit-profile
+    requests:
+      - _ref: shared/requests/update_profile.yaml
+      - _ref: shared/requests/get_user_profile.yaml
+    events:
+      onMount:
+        - id: get_user_profile
+          type: Request
+          params: get_user_profile
+        - id: set_user_profile
+          type: SetState
+          params:
+            profile:
+              _request: get_user_profile.profile
+    blocks:
+      - _ref: shared/components/profile_form.yaml
+      - id: cancel_btn
+        type: Button
+        layout:
+          span: 12
+          sm:
+            span: 12
+        properties:
+          title: Cancel
+          icon: AiOutlineLeft
+          block: true
+          type: default
+        events:
+          onClick:
+            - id: back
+              type: Link
+              params:
+                back: true
+      - id: save_btn
+        type: Button
+        layout:
+          span: 12
+          sm:
+            span: 12
+        properties:
+          title: Save
+          icon: AiOutlineSave
+          block: true
+        events:
+          onClick:
+            - id: update_profile
+              type: Request
+              params: update_profile
+            - id: back
+              type: Link
+              params:
+                back: true
