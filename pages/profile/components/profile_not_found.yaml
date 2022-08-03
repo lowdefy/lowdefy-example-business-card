@@ -1,0 +1,31 @@
+id: profile_not_found
+type: Box
+layout:
+  contentJustify: center
+  contentGutter: 20
+visible:
+  _and:
+    - _eq:
+        - _array.length:
+            _request: fetch_profile
+        - 0
+    - _ne:
+        - _request: fetch_profile
+        - null
+blocks:
+  - id: profile_not_found
+    type: Html
+    properties:
+      html: |
+        <h1>Profile not found</h1>
+  - id: sign_up_button
+    type: Button
+    properties:
+      block: true
+      title: Sign Up
+    events:
+      onClick:
+        - id: link_to_login
+          type: Link
+          params:
+            pageId: login

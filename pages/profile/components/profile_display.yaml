@@ -1,0 +1,51 @@
+id: profile_display
+type: Box
+layout:
+  contentJustify: center
+  contentGutter: 20
+visible:
+  _gt:
+    - _array.length:
+        _request: fetch_profile
+    - 0
+blocks:
+  - id: avatar
+    type: Avatar
+    layout:
+      flex: 0 1 auto
+    properties:
+      size: 100
+      shape: square
+      src:
+        _request: fetch_profile.0.picture
+  - id: profile_description
+    type: Html
+    style:
+      textAlign: center
+    properties:
+      html:
+        _nunjucks:
+          template: |
+            <h1>{{ name }}</h1>
+            <h2>{{ company }}</h2>
+            <h4>{{ email }}</h4>
+            <h4>{{ phone_number }}</h4>
+          on:
+            _request: fetch_profile.0
+  - id: connect_button
+    type: Button
+    visible:
+      _not:
+        _user: name
+    properties:
+      block: true
+      title: Connect
+    events:
+      onClick:
+        - id: link_to_login
+          type: Link
+          params:
+            pageId: login
+            urlQuery:
+              pid:
+                _url_query: pid
