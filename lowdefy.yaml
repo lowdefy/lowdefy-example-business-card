@@ -1,4 +1,4 @@
-lowdefy: local
+lowdefy: 4.0.0-alpha.22
 
 config:
   homePageId: home
