@@ -1,0 +1,14 @@
+id: fetch_profile
+type: MongoDBAggregation
+connectionId: users
+payload:
+  pid:
+    _url_query: pid
+properties:
+  pipeline:
+    - $match:
+        profile_id:
+          _payload: pid
+        profile.signed_up: true
+    - $replaceRoot:
+        newRoot: $profile

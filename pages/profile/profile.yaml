@@ -7,39 +7,14 @@ properties:
   content:
     style:
       backgroundColor: '#fff'
+requests:
+  - _ref: pages/profile/requests/fetch_profile.yaml
 events:
-  onInit:
-    - id: set_profile
-      type: SetState
-      params:
-        profile:
-          name: John Doe
-          email: john@example.com
-          picture: https://avatars.dicebear.com/api/bottts/12345.svg
+  onMount:
+    - id: fetch_profile
+      type: Request
+      params: fetch_profile
+
 blocks:
-  - id: avatar
-    type: Avatar
-    layout:
-      flex: 0 1 auto
-    properties:
-      size: 100
-      shape: square
-      src:
-        _state: profile.picture
-  - id: connect_button
-    type: Button
-    visible:
-      _not:
-        _user: name
-    properties:
-      block: true
-      title: Connect
-    events:
-      onClick:
-        - id: link_to_login
-          type: Link
-          params:
-            pageId: login
-            urlQuery:
-              pid:
-                _url_query: pid
+  - _ref: pages/profile/components/profile_not_found.yaml
+  - _ref: pages/profile/components/profile_display.yaml

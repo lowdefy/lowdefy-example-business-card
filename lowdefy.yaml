@@ -16,6 +16,7 @@ auth:
   theme:
     colorScheme: light
   userFields:
+    id: user.id
     profile_id: user.profile_id
     profile: user.profile
   adapter:
