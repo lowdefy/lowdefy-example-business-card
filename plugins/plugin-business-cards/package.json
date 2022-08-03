@@ -1,0 +1,45 @@
+{
+  "name": "@lowdefy/plugin-business-cards",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "description": "",
+  "homepage": "https://lowdefy.com",
+  "contributors": [
+    {
+      "name": "Sam Tolmay",
+      "url": "https://github.com/SamTolmay"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    "./auth/adapters": "./dist/auth/adapters.js",
+    "./blocks": "./dist/blocks.js",
+    "./types": "./dist/types.js"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "yarn swc",
+    "clean": "rm -rf dist",
+    "copyfiles": "copyfiles -u 1 \"./src/**/*\" dist -e \"./src/**/*.js\" -e \"./src/**/*.yaml\" -e \"./src/**/*.snap\"",
+    "prepare": "yarn build",
+    "swc": "swc src --out-dir dist --delete-dir-on-start && yarn copyfiles"
+  },
+  "dependencies": {
+    "@lowdefy/block-utils": "~4.0.0-alpha.22",
+    "@lowdefy/helpers": "~4.0.0-alpha.22",
+    "mongodb": "4.6.0",
+    "qrcode.react": "3.1.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "saslprep": "1.0.3",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.2.194",
+    "copyfiles": "2.4.1"
+  }
+}
