@@ -26,10 +26,15 @@ blocks:
   - id: profile.color
     type: ColorSelector
     required: true
+    visible:
+      _not:
+        _not:
+          _state: profile.color
     properties:
       title: Favourite Color
       size: large
       undefinedColor: '#438ef7'
+
   - id: profile.company
     type: TextInput
     properties:

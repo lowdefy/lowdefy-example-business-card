@@ -1,4 +1,4 @@
-lowdefy: 4.0.0-alpha.22
+lowdefy: local
 
 config:
   homePageId: home
@@ -12,7 +12,7 @@ config:
 
 plugins:
   - name: '@lowdefy/plugin-business-cards'
-    version: 'file:./plugins/plugin-business-cards'
+    version: 'portal:/Users/gerrie/GitHub/apps/lowdefy-example-business-card/app/plugins/plugin-business-cards'
 
 auth:
   theme:
