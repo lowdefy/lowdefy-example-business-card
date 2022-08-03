@@ -49,6 +49,7 @@ function MongoDBAdapter({ properties }) {
 
   return {
     async createUser(data) {
+      // TODO: add created date
       const user = to(data);
       user.profile_id = uuid();
       user.profile = {
