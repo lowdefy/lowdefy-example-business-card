@@ -1,19 +1,21 @@
 import React from 'react';
-import { QRCodeSVG } from 'qrcode.react';
+// Using deprecated import because import does not work properly with es modules
+import QRCode from 'qrcode.react';
 import { blockDefaultProps } from '@lowdefy/block-utils';
-const QRCode = ({ properties  })=>/*#__PURE__*/ React.createElement(QRCodeSVG, {
+const QRCodeBlock = ({ properties  })=>/*#__PURE__*/ React.createElement(QRCode, {
         bgColor: properties.bgColor,
         fgColor: properties.fgColor,
         imageSettings: properties.imageSettings,
         includeMargin: properties.includeMargin,
         level: properties.level,
         size: properties.size,
-        value: properties.value
+        value: properties.value,
+        renderAs: properties.renderAs ?? 'svg'
     });
-QRCode.defaultProps = blockDefaultProps;
-QRCode.meta = {
+QRCodeBlock.defaultProps = blockDefaultProps;
+QRCodeBlock.meta = {
     category: 'display',
     icons: [],
     styles: []
 };
-export default QRCode;
+export default QRCodeBlock;
