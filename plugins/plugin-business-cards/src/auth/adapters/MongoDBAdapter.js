@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 import { MongoClient, ObjectId } from 'mongodb';
 
 function from(object) {
@@ -49,6 +50,12 @@ function MongoDBAdapter({ properties }) {
   return {
     async createUser(data) {
       const user = to(data);
+      user.profile_id = uuid();
+      user.profile = {
+        name: data.name,
+        email: data.email,
+        picture: data.image,
+      };
       await (await db).users.insertOne(user);
       return from(user);
     },
@@ -60,14 +67,12 @@ function MongoDBAdapter({ properties }) {
     },
 
     async getUserByEmail(email) {
-      console.log('getUserByEmail', email);
       const user = await (await db).users.findOne({ email });
       if (!user) return null;
       return from(user);
     },
 
     async getUserByAccount(provider_providerAccountId) {
-      console.log('getUserByAccount', provider_providerAccountId);
       const account = await (await db).accounts.findOne(provider_providerAccountId);
       if (!account) return null;
 
@@ -78,7 +83,6 @@ function MongoDBAdapter({ properties }) {
     },
 
     async updateUser(data) {
-      console.log('updateUser', data);
       const { _id, ...user } = to(data);
 
       const result = await (
@@ -89,7 +93,6 @@ function MongoDBAdapter({ properties }) {
     },
 
     async deleteUser(id) {
-      console.log('deleteUser', id);
       const userId = _id(id);
       const m = await db;
       await Promise.all([
@@ -100,14 +103,12 @@ function MongoDBAdapter({ properties }) {
     },
 
     linkAccount: async (data) => {
-      console.log('linkAccount', id);
       const account = to(data);
       await (await db).accounts.insertOne(account);
       return account;
     },
 
     async unlinkAccount(provider_providerAccountId) {
-      console.log('unlinkAccount', provider_providerAccountId);
       const { value: account } = await (
         await db
       ).accounts.findOneAndDelete(provider_providerAccountId);
@@ -115,7 +116,6 @@ function MongoDBAdapter({ properties }) {
     },
 
     async getSessionAndUser(sessionToken) {
-      console.log('getSessionAndUser', sessionToken);
       const session = await (await db).sessions.findOne({ sessionToken });
       if (!session) return null;
 
@@ -128,14 +128,12 @@ function MongoDBAdapter({ properties }) {
     },
 
     async createSession(data) {
-      console.log('createSession', data);
       const session = to(data);
       await (await db).sessions.insertOne(session);
       return from(session);
     },
 
     async updateSession(data) {
-      console.log('updateSession', data);
       const { _id, ...session } = to(data);
 
       const result = await (
@@ -149,7 +147,6 @@ function MongoDBAdapter({ properties }) {
     },
 
     async deleteSession(sessionToken) {
-      console.log('deleteSession', sessionToken);
       const { value: session } = await (
         await db
       ).sessions.findOneAndDelete({
