@@ -26,15 +26,20 @@ blocks:
       shape: square
       src:
         _state: profile.picture
-  - id: profile_description
-    type: Html
-    style:
-      textAlign: center
+  - id: connect_button
+    type: Button
+    visible:
+      _not:
+        _user: name
     properties:
-      html:
-        _nunjucks:
-          template: |
-            <h1>{{ name }}</h1>
-            <h4>{{ email }}</h4>
-          on:
-            _state: profile
+      block: true
+      title: Connect
+    events:
+      onClick:
+        - id: link_to_login
+          type: Link
+          params:
+            pageId: login
+            urlQuery:
+              pid:
+                _url_query: pid

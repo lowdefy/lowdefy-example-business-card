@@ -63,6 +63,5 @@ pages:
   - _ref: pages/login/login.yaml
   - _ref: pages/login-callback/login-callback.yaml
   - _ref: pages/logout/logout.yaml
-  - _ref: pages/my-profile/my-profile.yaml
   - _ref: pages/profile/profile.yaml
   - _ref: pages/sign-up/sign-up.yaml

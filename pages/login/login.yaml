@@ -16,3 +16,6 @@ blocks:
           params:
             callbackUrl:
               pageId: login-callback
+              urlQuery:
+                pid:
+                  _url_query: pid

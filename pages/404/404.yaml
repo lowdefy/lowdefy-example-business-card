@@ -6,8 +6,7 @@ events:
       type: Link
       skip:
         _not:
-          _not:
-            _user: true
+          _user: name
       params:
         pageId: login
 properties:
