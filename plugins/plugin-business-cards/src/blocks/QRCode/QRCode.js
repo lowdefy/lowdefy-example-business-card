@@ -1,8 +1,6 @@
 import React from 'react';
-import qrcode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 import { blockDefaultProps } from '@lowdefy/block-utils';
-
-const { QRCodeSVG } = qrcode;
 
 const QRCode = ({ properties }) => (
   <QRCodeSVG

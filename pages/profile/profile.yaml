@@ -1,20 +1,25 @@
-id: profile
-type: PageHeaderMenu
-layout:
-  contentJustify: center
-  contentGutter: 20
-properties:
-  content:
-    style:
-      backgroundColor: '#fff'
-requests:
-  - _ref: pages/profile/requests/fetch_profile.yaml
-events:
-  onMount:
-    - id: fetch_profile
-      type: Request
-      params: fetch_profile
-
-blocks:
-  - _ref: pages/profile/components/profile_not_found.yaml
-  - _ref: pages/profile/components/profile_display.yaml
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: profile
+    requests:
+      - _ref: pages/profile/requests/fetch_profile.yaml
+      - _ref: pages/profile/requests/insert_connection.yaml
+    events:
+      onInit:
+        - _ref: shared/set_session_id.yaml
+      onMount:
+        - id: fetch_profile
+          type: Request
+          params: fetch_profile
+      onMountAsync:
+        - id: insert_connection
+          type: Request
+          skip:
+            _eq:
+              - _user: profile_id
+              - _url_query: pid
+          params: insert_connection
+    blocks:
+      - _ref: pages/profile/components/profile_not_found.yaml
+      - _ref: pages/profile/components/profile_display.yaml
