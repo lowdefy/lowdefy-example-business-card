@@ -1,0 +1,19 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: overview
+    requests:
+      - _ref: pages/overview/requests/fetch_users.yaml
+      - _ref: pages/overview/requests/fetch_connections.yaml
+      - _ref: pages/overview/requests/count_users.yaml
+    events:
+      onInit:
+        - id: fetch_requests
+          type: Request
+          params:
+            - count_users
+            - fetch_users
+            - fetch_connections
+    blocks:
+      - _ref: pages/overview/components/total_users.yaml
+      - _ref: pages/overview/components/graph_chart.yaml

@@ -1,0 +1,37 @@
+id: chart
+type: EChart
+properties:
+  height:
+    _if:
+      test:
+        _or:
+          - _eq:
+              - _media: size
+              - xs
+          - _eq:
+              - _media: size
+              - sm
+      then: 290
+      else: 500
+  width: null
+  option:
+    animationDuration: 1500
+    animationEasingUpdate: quinticInOut
+    series:
+      name: Users
+      type: graph
+      layout: circular
+      roam: true
+      label:
+        position: right
+      data:
+        _request: fetch_users
+      links:
+        _request: fetch_connections
+      lineStyle:
+        curveness: 0.3
+        width: 2
+      emphasis:
+        focus: adjacency
+        lineStyle:
+          width: 5

@@ -1,0 +1,6 @@
+id: total_users
+type: Statistic
+properties:
+  title: Total Users
+  value:
+    _request: count_users.0.total

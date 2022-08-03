@@ -1,0 +1,49 @@
+id: fetch_users
+type: MongoDBAggregation
+connectionId: users
+properties:
+  options:
+    allowDiskUse: true
+    readPreference: secondaryPreferred
+  pipeline:
+    - $lookup:
+        from: connections
+        let:
+          profile_id: $profile_id
+        pipeline:
+          - $match:
+              $expr:
+                $or:
+                  - $eq:
+                      - $to_user
+                      - $$profile_id
+                  - $eq:
+                      - $from_user
+                      - $$profile_id
+          - $group:
+              _id:
+                to_user: $to_user
+                from_user: $from_user
+          - $group:
+              _id: 0
+              count:
+                $sum: 1
+          - $project:
+              count: 1
+        as: connections
+    - $unwind:
+        path: $connections
+        preserveNullAndEmptyArrays: true
+    - $project:
+        id: $profile_id
+        name: 1
+        symbolSize:
+          $ifNull:
+            - $add:
+                - $connections.count
+                - 10
+            - 10
+        itemStyle.color:
+          $ifNull:
+            - $profile.color
+            - red
