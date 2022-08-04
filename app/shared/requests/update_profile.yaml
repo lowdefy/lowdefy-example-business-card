@@ -9,7 +9,6 @@ properties:
       _user: profile_id
   update:
     $set:
-      profile.signed_up: true
       profile.name:
         _payload: name
       # profile.bio:

@@ -3,27 +3,27 @@ type: Box
 events:
   onMount:
     - _ref: shared/set_session_id.yaml
-    - id: link_to_sign_up
-      type: Link
-      skip:
-        _not:
-          _not:
-            _user: profile.signed_up
-      params:
-        pageId: sign-up
-        urlQuery:
-          pid:
-            _url_query: pid
-    - id: break_chain_sign_up
-      type: Throw
-      skip:
-        _not:
-          _not:
-            _user: profile.signed_up
-      messages:
-        error: false
-      params:
-        throw: true
+    # - id: link_to_sign_up
+    #   type: Link
+    #   skip:
+    #     _not:
+    #       _not:
+    #         _user: profile.signed_up
+    #   params:
+    #     pageId: sign-up
+    #     urlQuery:
+    #       pid:
+    #         _url_query: pid
+    # - id: break_chain_sign_up
+    #   type: Throw
+    #   skip:
+    #     _not:
+    #       _not:
+    #         _user: profile.signed_up
+    #   messages:
+    #     error: false
+    #   params:
+    #     throw: true
     - id: link_to_profile
       type: Link
       skip:

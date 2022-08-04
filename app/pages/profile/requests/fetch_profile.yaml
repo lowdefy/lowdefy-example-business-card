@@ -9,6 +9,6 @@ properties:
     - $match:
         profile_id:
           _payload: pid
-        profile.signed_up: true
+        # profile.signed_up: true
     - $replaceRoot:
         newRoot: $profile
