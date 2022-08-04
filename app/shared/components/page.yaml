@@ -27,6 +27,10 @@ blocks:
       marginBottom: -150
   - id: menu_button
     type: Button
+    visible:
+      _var:
+        name: menu
+        default: true
     style:
       textAlign: right
       padding: 20

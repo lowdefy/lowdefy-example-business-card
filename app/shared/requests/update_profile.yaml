@@ -12,6 +12,8 @@ properties:
       profile.signed_up: true
       profile.name:
         _payload: name
+      # profile.bio:
+      #   _payload: bio
       profile.color:
         _payload: color
       profile.company:

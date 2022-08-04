@@ -42,6 +42,16 @@ blocks:
             {% if phone_number %}<h4>{{ phone_number }}</h4>{% endif %}
           on:
             _request: fetch_profile.0
+
+  # - id: bio
+  #   type: Markdown
+  #   style:
+  #     maxWidth: 300
+  #     textAlign: center
+  #   properties:
+  #     content:
+  #       _request: fetch_profile.0.bio
+
   - id: connect_button
     type: Button
     visible:
