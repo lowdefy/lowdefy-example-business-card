@@ -11,9 +11,19 @@ visible:
 blocks:
   - id: avatar
     type: Avatar
-    layout:
-      flex: 0 1 auto
+    style:
+      textAlign: center
     properties:
+      style:
+        border:
+          _string.concat:
+            - '6px solid '
+            - _if_none:
+                - _var:
+                    name: color
+                    default:
+                      _user: profile.color
+                - '#438ef7'
       size: 100
       src:
         _request: fetch_profile.0.picture
@@ -25,10 +35,11 @@ blocks:
       html:
         _nunjucks:
           template: |
-            <h1>{{ name }}</h1>
-            <h2>{{ company }}</h2>
-            <h4>{{ email }}</h4>
-            <h4>{{ phone_number }}</h4>
+            <h2>{{ name }}</h2>
+            {% if company %}<h3>{{ company }}</h3>{% endif %}
+            {% if website %}<h4><a href="{{ website }}">{{ website }}</a></h4>{% endif %}
+            {% if email %}<h4>{{ email }}</h4>{% endif %}
+            {% if phone_number %}<h4>{{ phone_number }}</h4>{% endif %}
           on:
             _request: fetch_profile.0
   - id: connect_button
@@ -48,3 +59,95 @@ blocks:
             urlQuery:
               pid:
                 _url_query: pid
+
+  - id: linkedin_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _user: profile.linkedin
+    properties:
+      size: large
+      title: LinkedIn
+      icon: AiFillLinkedin
+      block: true
+      color: '#2D64BC'
+    events:
+      onClick:
+        - id: linkedin
+          type: Link
+          params:
+            url:
+              _request: fetch_profile.0.linkedin
+  - id: twitter_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _user: profile.twitter
+    properties:
+      size: large
+      title: Twitter
+      icon: AiOutlineTwitter
+      block: true
+      color: '#2696E8'
+    events:
+      onClick:
+        - id: twitter
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://twitter.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.twitter
+                    - '@'
+                    - ''
+  - id: github_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _user: profile.github
+    properties:
+      size: large
+      title: Github
+      icon: AiOutlineGithub
+      block: true
+      color: '#000'
+    events:
+      onClick:
+        - id: github
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://github.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.github
+                    - '@'
+                    - ''
+  - id: instagram_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _user: profile.instagram
+    properties:
+      size: large
+      title: Instagram
+      icon: AiFillInstagram
+      block: true
+      color: '#C7389D'
+    events:
+      onClick:
+        - id: github
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://www.instagram.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.instagram
+                    - '@'
+                    - ''

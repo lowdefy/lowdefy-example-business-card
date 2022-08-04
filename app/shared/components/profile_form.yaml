@@ -8,6 +8,16 @@ blocks:
     style:
       textAlign: center
     properties:
+      style:
+        border:
+          _string.concat:
+            - '6px solid '
+            - _if_none:
+                - _var:
+                    name: color
+                    default:
+                      _user: profile.color
+                - '#438ef7'
       size: 100
       src:
         _user: profile.picture
@@ -26,14 +36,13 @@ blocks:
   - id: profile.color
     type: ColorSelector
     required: true
-    visible:
-      _not:
-        _not:
-          _state: profile.color
     properties:
       title: Favourite Color
       size: large
-      undefinedColor: '#438ef7'
+      undefinedColor:
+        _if_none:
+          - _user: profile.color
+          - '#438ef7'
 
   - id: profile.company
     type: TextInput
