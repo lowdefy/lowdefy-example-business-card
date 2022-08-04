@@ -2,6 +2,10 @@ _ref:
   path: shared/components/page.yaml
   vars:
     id: profile
+    menu:
+      _not:
+        _not:
+          _user: id
     requests:
       - _ref: pages/profile/requests/fetch_profile.yaml
       - _ref: pages/profile/requests/insert_connection.yaml

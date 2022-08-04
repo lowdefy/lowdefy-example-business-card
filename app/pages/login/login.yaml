@@ -1,21 +1,31 @@
-id: login
-type: PageHeaderMenu
-blocks:
-  - id: login_button
-    type: Button
-    properties:
-      size: large
-      title: Login with LinkedIn
-      icon: AiFillLinkedin
-      block: true
-      color: '#2D64BC'
-    events:
-      onClick:
-        - id: login
-          type: Login
-          params:
-            callbackUrl:
-              pageId: login-callback
-              urlQuery:
-                pid:
-                  _url_query: pid
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: login
+    menu: false
+    blocks:
+      - id: title
+        type: Html
+        style:
+          textAlign: center
+          marginBottom: 70px
+        properties:
+          html: <h2 style="color:#FFF">Sign in to create a business card</h2>
+      - id: login_button
+        type: Button
+        properties:
+          size: large
+          title: Login with LinkedIn
+          icon: AiFillLinkedin
+          block: true
+          color: '#2D64BC'
+        events:
+          onClick:
+            - id: login
+              type: Login
+              params:
+                callbackUrl:
+                  pageId: login-callback
+                  urlQuery:
+                    pid:
+                      _url_query: pid
