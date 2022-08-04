@@ -60,12 +60,24 @@ connections:
 menus:
   - id: default
     links:
+      - id: home
+        type: MenuLink
+        pageId: home
+        properties:
+          title: My Card
+          icon: AiOutlineIdcard
+      - id: my-profile
+        type: MenuLink
+        pageId: my-profile
+        properties:
+          title: View Profile
+          icon: AiOutlineUser
       - id: edit-profile
         type: MenuLink
         pageId: edit-profile
         properties:
           title: Edit Profile
-          icon: AiOutlineUser
+          icon: AiOutlineUserSwitch
       - id: logout
         type: MenuLink
         pageId: logout
@@ -81,4 +93,5 @@ pages:
   - _ref: pages/logout/logout.yaml
   - _ref: pages/edit-profile/edit-profile.yaml
   - _ref: pages/profile/profile.yaml
+  - _ref: pages/my-profile/my-profile.yaml
   - _ref: pages/sign-up/sign-up.yaml

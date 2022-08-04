@@ -6,17 +6,13 @@ _ref:
       _state: profile.color
     requests:
       - _ref: shared/requests/update_profile.yaml
-      - _ref: shared/requests/get_user_profile.yaml
     events:
       onMount:
-        - id: get_user_profile
-          type: Request
-          params: get_user_profile
         - id: set_user_profile
           type: SetState
           params:
             profile:
-              _request: get_user_profile.profile
+              _user: profile
     blocks:
       - _ref:
           path: shared/components/profile_form.yaml

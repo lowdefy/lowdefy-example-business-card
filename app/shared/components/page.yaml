@@ -24,13 +24,12 @@ blocks:
                 _user: profile.color
           - '#438ef7'
       height: 160
-      marginBottom: -160
+      marginBottom: -150
   - id: menu_button
     type: Button
     style:
       textAlign: right
       padding: 20
-      marginBottom: -35
     properties:
       hideTitle: true
       icon: AiOutlineMenu
@@ -47,6 +46,7 @@ blocks:
     type: Box
     style:
       padding: 0 20px
+      minHeight: 78vh
     blocks:
       _var:
         name: blocks
