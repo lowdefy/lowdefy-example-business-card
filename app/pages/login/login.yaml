@@ -8,7 +8,7 @@ _ref:
         type: Html
         style:
           textAlign: center
-          marginBottom: 70px
+          marginBottom: 90px
         properties:
           html: <h2 style="color:#FFF">Sign in to create a business card</h2>
       - id: login_button

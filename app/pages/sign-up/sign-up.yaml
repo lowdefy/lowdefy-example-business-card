@@ -3,6 +3,8 @@ _ref:
   vars:
     id: sign-up
     menu: false
+    requests:
+      - _ref: shared/requests/update_profile.yaml
     events:
       onMount:
         - id: link_home
