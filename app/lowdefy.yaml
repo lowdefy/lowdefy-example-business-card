@@ -78,6 +78,12 @@ menus:
         properties:
           title: My Connections
           icon: AiOutlineBook
+      - id: dashboard
+        type: MenuLink
+        pageId: dashboard
+        properties:
+          title: Dashboard
+          icon: AiOutlineDotChart
       - id: edit-profile
         type: MenuLink
         pageId: edit-profile
@@ -102,3 +108,4 @@ pages:
   - _ref: pages/profile/profile.yaml
   - _ref: pages/my-profile/my-profile.yaml
   - _ref: pages/sign-up/sign-up.yaml
+  - _ref: pages/dashboard/dashboard.yaml

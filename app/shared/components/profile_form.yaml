@@ -44,6 +44,14 @@ blocks:
           - _user: profile.color
           - '#438ef7'
 
+  # - id: profile.bio
+  #   type: TextArea
+  #   required: true
+  #   properties:
+  #     title: Bio
+  #     placeholder: 'Bears, beets, battlestar galactica... Need I say more?'
+  #     size: large
+
   - id: profile.company
     type: TextInput
     properties:
