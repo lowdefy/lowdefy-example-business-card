@@ -46,6 +46,15 @@ blocks:
           params:
             blockId: menu_drawer
             method: toggleOpen
+  - id: menu_button_placeholder
+    type: Box
+    visible:
+      _not:
+        _var:
+          name: menu
+          default: true
+    style:
+      height: 80px
   - id: content
     type: Box
     style:
