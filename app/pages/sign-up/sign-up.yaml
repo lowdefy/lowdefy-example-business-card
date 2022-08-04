@@ -1,0 +1,60 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: sign-up
+    menu: false
+    events:
+      onMount:
+        - id: link_home
+          type: Link
+          skip:
+            _not:
+              _user: profile.signed_up
+          params:
+            pageId: home
+        - id: set_state
+          type: SetState
+          params:
+            profile:
+              _user: profile
+    blocks:
+      - _ref:
+          path: shared/components/profile_form.yaml
+          vars:
+            title: Welcome
+      - id: sign_up_button
+        type: Button
+        properties:
+          title: Sign Up
+          block: true
+          size: large
+        events:
+          onClick:
+            - id: update_profile
+              type: Request
+              params: update_profile
+            - id: link_to_profile
+              type: Link
+              skip:
+                _eq:
+                  - _url_query: pid
+                  - null
+              params:
+                pageId: profile
+                urlQuery:
+                  pid:
+                    _url_query: pid
+            - id: break_chain_profile
+              type: Throw
+              skip:
+                _eq:
+                  - _url_query: pid
+                  - null
+              messages:
+                error: false
+              params:
+                throw: true
+            - id: link_home
+              type: Link
+              params:
+                home: true

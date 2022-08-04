@@ -1,0 +1,16 @@
+id: '404'
+type: Result
+events:
+  onMount:
+    - id: not_logged_in_redirect
+      type: Link
+      skip:
+        _not:
+          _not:
+            _user: id
+      params:
+        pageId: login
+properties:
+  status: 404
+  title: '404'
+  subTitle: Sorry, the page you are visiting does not exist.

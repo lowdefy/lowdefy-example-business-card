@@ -1,0 +1,54 @@
+id: connections_list.$.card
+type: Card
+layout:
+  contentGutter: 24
+events:
+  onClick:
+    - id: link_to_profile
+      type: Link
+      params:
+        pageId: profile
+        urlQuery:
+          pid:
+            _state: connections_list.$.pid
+blocks:
+  - id: connections_list.$.avatar
+    type: Avatar
+    layout:
+      flex: 0 1 auto
+    properties:
+      src:
+        _state: connections_list.$.picture
+      size: 60
+  - id: connections_list.$.name_html
+    type: Html
+    layout:
+      flex: 1 1 auto
+    properties:
+      html:
+        _nunjucks:
+          template: |
+            <span style="font-size:0.7em;" ><i>{{ timestamp | date("D MMM YYYY") }}<i/></span><br/>
+            <span>{{ name }}</span><br/>
+            <span><b>{{ company }}</b></span>
+
+          on:
+            _state: connections_list.$
+  - id: connections_list.$.icon
+    type: Icon
+    layout:
+      flex: 0 1 auto
+    properties:
+      _if:
+        test:
+          _eq:
+            - _state: connections_list.$.direction
+            - from_them
+        then:
+          name: FiArrowRightCircle
+          color: '#8457b8'
+          size: 30
+        else:
+          name: FiArrowLeftCircle
+          color: '#a0d942'
+          size: 30

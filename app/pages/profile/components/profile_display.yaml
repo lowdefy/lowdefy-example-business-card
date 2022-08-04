@@ -1,0 +1,169 @@
+id: profile_display
+type: Box
+layout:
+  contentJustify: center
+  contentGutter: 20
+visible:
+  _gt:
+    - _array.length:
+        _request: fetch_profile
+    - 0
+blocks:
+  - id: avatar
+    type: Avatar
+    style:
+      textAlign: center
+    properties:
+      style:
+        border:
+          _string.concat:
+            - '6px solid '
+            - _if_none:
+                - _var:
+                    name: color
+                    default:
+                      _request: fetch_profile.0.color
+                - '#438ef7'
+      size: 100
+      src:
+        _request: fetch_profile.0.picture
+  - id: profile_description
+    type: Html
+    style:
+      textAlign: center
+    properties:
+      html:
+        _nunjucks:
+          template: |
+            <h2>{{ name }}</h2>
+            {% if company %}<h3>{{ company }}</h3>{% endif %}
+            {% if website %}<h4><a href="{{ website }}">{{ website }}</a></h4>{% endif %}
+            {% if email %}<h4>{{ email }}</h4>{% endif %}
+            {% if phone_number %}<h4>{{ phone_number }}</h4>{% endif %}
+          on:
+            _request: fetch_profile.0
+
+  # - id: bio
+  #   type: Markdown
+  #   style:
+  #     maxWidth: 300
+  #     textAlign: center
+  #   properties:
+  #     content:
+  #       _request: fetch_profile.0.bio
+
+  - id: connect_button
+    type: Button
+    visible:
+      _not:
+        _user: id
+    properties:
+      size: large
+      block: true
+      title: Sign in to Connect
+      type: default
+    events:
+      onClick:
+        - id: link_to_login
+          type: Link
+          params:
+            pageId: login
+            urlQuery:
+              pid:
+                _url_query: pid
+  - id: divider
+    type: Divider
+    properties:
+      title: Social Links
+
+  - id: linkedin_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _request: fetch_profile.0.linkedin
+    properties:
+      size: large
+      title: LinkedIn
+      icon: AiFillLinkedin
+      block: true
+      color: '#2D64BC'
+    events:
+      onClick:
+        - id: linkedin
+          type: Link
+          params:
+            url:
+              _request: fetch_profile.0.linkedin
+  - id: twitter_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _request: fetch_profile.0.twitter
+    properties:
+      size: large
+      title: Twitter
+      icon: AiOutlineTwitter
+      block: true
+      color: '#2696E8'
+    events:
+      onClick:
+        - id: twitter
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://twitter.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.twitter
+                    - '@'
+                    - ''
+  - id: github_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _request: fetch_profile.0.github
+    properties:
+      size: large
+      title: Github
+      icon: AiOutlineGithub
+      block: true
+      color: '#000'
+    events:
+      onClick:
+        - id: github
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://github.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.github
+                    - '@'
+                    - ''
+  - id: instagram_button
+    type: Button
+    visible:
+      _not:
+        _not:
+          _request: fetch_profile.0.instagram
+    properties:
+      size: large
+      title: Instagram
+      icon: AiFillInstagram
+      block: true
+      color: '#C7389D'
+    events:
+      onClick:
+        - id: github
+          type: Link
+          params:
+            url:
+              _string.concat:
+                - 'https://www.instagram.com/'
+                - _string.replace:
+                    - _request: fetch_profile.0.instagram
+                    - '@'
+                    - ''

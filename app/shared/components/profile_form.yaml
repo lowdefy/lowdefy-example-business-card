@@ -1,0 +1,113 @@
+id: profile_box
+type: Box
+layout:
+  contentGutter: 16
+blocks:
+  - id: avatar
+    type: Avatar
+    style:
+      textAlign: center
+    properties:
+      style:
+        border:
+          _string.concat:
+            - '6px solid '
+            - _if_none:
+                - _var:
+                    name: color
+                    default:
+                      _user: profile.color
+                - '#438ef7'
+      size: 100
+      src:
+        _user: profile.picture
+  - id: divide_social
+    type: Divider
+    properties:
+      title:
+        _var: title
+  - id: profile.name
+    type: TextInput
+    required: true
+    properties:
+      title: Name & Surname
+      placeholder: 'Dwight Schrute'
+      size: large
+  - id: profile.color
+    type: ColorSelector
+    required: true
+    properties:
+      title: Favourite Color
+      size: large
+      undefinedColor:
+        _if_none:
+          - _user: profile.color
+          - '#438ef7'
+
+  # - id: profile.bio
+  #   type: TextArea
+  #   required: true
+  #   properties:
+  #     title: Bio
+  #     placeholder: 'Bears, beets, battlestar galactica... Need I say more?'
+  #     size: large
+
+  - id: profile.company
+    type: TextInput
+    properties:
+      title: Company
+      placeholder: 'Dunder Mifflin Inc.'
+      size: large
+  - id: profile.website
+    type: TextInput
+    properties:
+      title: Website
+      placeholder: 'https://dundermifflin.com'
+      size: large
+  - id: divide_social
+    type: Divider
+    properties:
+      title: Contact Details
+  - id: profile.email
+    type: TextInput
+    required: true
+    properties:
+      title: Email
+      placeholder: 'dwight@dundermifflin.com'
+      size: large
+  - id: profile.phone_number
+    type: TextInput
+    properties:
+      title: Phone Number
+      size: large
+
+  - id: divide_social
+    type: Divider
+    properties:
+      title: Social Links
+  - id: profile.linkedin
+    type: TextInput
+    properties:
+      title: LinkedIn Url
+      placeholder: 'https://www.linkedin.com/in/dwightk'
+      size: large
+  - id: profile.twitter
+    type: TextInput
+    properties:
+      title: Twitter Handle
+      placeholder: '@beetsandbears'
+      size: large
+  - id: profile.github
+    type: TextInput
+    properties:
+      title: Github Username
+      placeholder: papercut
+      size: large
+  - id: profile.instagram
+    type: TextInput
+    properties:
+      title: Instagram Username
+      placeholder: '@bringbacksprinkles'
+      size: large
+  - id: end_social
+    type: Divider

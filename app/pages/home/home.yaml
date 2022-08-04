@@ -1,0 +1,49 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: home
+    blocks:
+      - id: avatar
+        type: Avatar
+        style:
+          textAlign: center
+        properties:
+          style:
+            border:
+              _string.concat:
+                - '6px solid '
+                - _if_none:
+                    - _var:
+                        name: color
+                        default:
+                          _user: profile.color
+                    - '#438ef7'
+          size: 100
+          src:
+            _user: profile.picture
+      - id: profile_description
+        type: Html
+        style:
+          textAlign: center
+        properties:
+          html:
+            _nunjucks:
+              template: |
+                <h2>{{ name }}</h2>
+                {% if company %}<h3>{{ company }}</h3>{% endif %}
+                {% if website %}<h4><a href="{{ website }}">{{ website }}</a></h4>{% endif %}
+                {% if email %}<h4>{{ email }}</h4>{% endif %}
+                {% if phone_number %}<h4>{{ phone_number }}</h4>{% endif %}
+              on:
+                _user: profile
+      - id: qr_code
+        type: QRCode
+        style:
+          textAlign: center
+          marginTop: 20
+        properties:
+          size: 200
+          value:
+            _string.concat:
+              - 'https://card.lowdefy.app/profile?pid='
+              - _user: profile_id

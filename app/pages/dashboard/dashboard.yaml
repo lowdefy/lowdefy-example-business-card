@@ -1,0 +1,27 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: dashboard
+    requests:
+      - _ref: pages/dashboard/requests/fetch_users.yaml
+      - _ref: pages/dashboard/requests/fetch_connections.yaml
+      - _ref: pages/dashboard/requests/count_users.yaml
+    events:
+      onInit:
+        - id: fetch_requests
+          type: Request
+          params:
+            - count_users
+            - fetch_users
+            - fetch_connections
+    blocks:
+      - id: total_users
+        type: Statistic
+        properties:
+          title: Total Connections
+          stlye:
+            color: white
+          value:
+            _request: count_users.0.total
+
+      - _ref: pages/dashboard/components/graph_chart.yaml

@@ -1,0 +1,11 @@
+id: my-profile
+type: Box
+events:
+  onMount:
+    - id: redirect
+      type: Link
+      params:
+        pageId: profile
+        urlQuery:
+          pid:
+            _user: profile_id

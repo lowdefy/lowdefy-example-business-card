@@ -1,0 +1,11 @@
+id: fetch_connections
+type: MongoDBAggregation
+connectionId: connections
+properties:
+  options:
+    allowDiskUse: true
+    readPreference: secondaryPreferred
+  pipeline:
+    - $project:
+        source: $from_user
+        target: $to_user
