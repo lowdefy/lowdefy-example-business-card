@@ -9,10 +9,27 @@ _ref:
         - id: get_connections
           type: Request
           params: get_connections
-    blocks:
-      - id: data
-        type: Box
-        properties:
-          x:
-            _log:
+        - id: set
+          type: SetState
+          params:
+            connections_list:
               _request: get_connections
+    blocks:
+      - id: title
+        type: Html
+        style:
+          textAlign: center
+        properties:
+          html: |
+            <h2>My Connections</h2>
+      - id: connections_list
+        type: List
+        layout:
+          contentGutter: 8
+        blocks:
+          - id: connections_list.$.box
+            type: Box
+            style:
+              padding: 4px
+            blocks:
+              - _ref: pages/connections/components/connection_list_card.yaml
