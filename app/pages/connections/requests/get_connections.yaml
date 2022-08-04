@@ -15,8 +15,8 @@ properties:
             - $eq:
                 - $from_user
                 - _user: profile_id
-            - Scanned them
-            - Scanned me
+            - from_me
+            - from_them
         profile_id:
           $cond:
             - $eq:
@@ -31,7 +31,7 @@ properties:
         direction:
           $first: $direction
         timestamp:
-          $first: timestamp
+          $first: $timestamp
     - $lookup:
         from: users
         localField: _id
@@ -47,6 +47,8 @@ properties:
     - $unwind:
         path: $profile
     - $project:
+        _id: 0
+        pid: $_id
         direction: 1
         timestamp: 1
         name: $profile.name

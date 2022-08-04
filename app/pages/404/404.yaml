@@ -7,7 +7,7 @@ events:
       skip:
         _not:
           _not:
-            _user: name
+            _user: id
       params:
         pageId: login
 properties:
