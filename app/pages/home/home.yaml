@@ -7,8 +7,17 @@ _ref:
         type: Avatar
         style:
           textAlign: center
-          marginBottom: 30
         properties:
+          style:
+            border:
+              _string.concat:
+                - '6px solid '
+                - _if_none:
+                    - _var:
+                        name: color
+                        default:
+                          _user: profile.color
+                    - '#438ef7'
           size: 100
           src:
             _user: profile.picture
@@ -36,6 +45,5 @@ _ref:
           size: 200
           value:
             _string.concat:
-              - _build.env: NEXTAUTH_URL
-              - '?pid='
+              - 'https://card.lowdefy.app/profile?pid='
               - _user: profile_id
