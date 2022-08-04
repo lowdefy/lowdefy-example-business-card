@@ -1,0 +1,18 @@
+_ref:
+  path: shared/components/page.yaml
+  vars:
+    id: connections
+    requests:
+      - _ref: pages/connections/requests/get_connections.yaml
+    events:
+      onMount:
+        - id: get_connections
+          type: Request
+          params: get_connections
+    blocks:
+      - id: data
+        type: Box
+        properties:
+          x:
+            _log:
+              _request: get_connections
