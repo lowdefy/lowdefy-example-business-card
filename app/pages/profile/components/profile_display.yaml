@@ -22,7 +22,7 @@ blocks:
                 - _var:
                     name: color
                     default:
-                      _user: profile.color
+                      _request: fetch_profile.0.color
                 - '#438ef7'
       size: 100
       src:
@@ -65,7 +65,7 @@ blocks:
     visible:
       _not:
         _not:
-          _user: profile.linkedin
+          _request: fetch_profile.0.linkedin
     properties:
       size: large
       title: LinkedIn
@@ -84,7 +84,7 @@ blocks:
     visible:
       _not:
         _not:
-          _user: profile.twitter
+          _request: fetch_profile.0.twitter
     properties:
       size: large
       title: Twitter
@@ -108,7 +108,7 @@ blocks:
     visible:
       _not:
         _not:
-          _user: profile.github
+          _request: fetch_profile.0.github
     properties:
       size: large
       title: Github
@@ -132,7 +132,7 @@ blocks:
     visible:
       _not:
         _not:
-          _user: profile.instagram
+          _request: fetch_profile.0.instagram
     properties:
       size: large
       title: Instagram
