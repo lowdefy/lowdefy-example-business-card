@@ -1,0 +1,54 @@
+id: get_connections
+type: MongoDBAggregation
+connectionId: connections
+properties:
+  pipeline:
+    - $match:
+        $or:
+          - from_user:
+              _user: profile_id
+          - to_user:
+              _user: profile_id
+    - $addFields:
+        direction:
+          $cond:
+            - $eq:
+                - $from_user
+                - _user: profile_id
+            - Scanned them
+            - Scanned me
+        profile_id:
+          $cond:
+            - $eq:
+                - $from_user
+                - _user: profile_id
+            - $to_user
+            - $from_user
+    - $sort:
+        timestamp: 1
+    - $group:
+        _id: $profile_id
+        direction:
+          $first: $direction
+        timestamp:
+          $first: timestamp
+    - $lookup:
+        from: users
+        localField: _id
+        foreignField: profile_id
+        pipeline:
+          - $replaceRoot:
+              newRoot: $profile
+          - $project:
+              name: 1
+              picture: 1
+              company: 1
+        as: profile
+    - $unwind:
+        path: $profile
+    - $project:
+        direction: 1
+        timestamp: 1
+        name: $profile.name
+        picture: $profile.picture
+        company: $profile.company

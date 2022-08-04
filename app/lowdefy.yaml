@@ -60,6 +60,12 @@ connections:
 menus:
   - id: default
     links:
+      - id: connections
+        type: MenuLink
+        pageId: connections
+        properties:
+          title: My Connections
+          icon: AiOutlineBook
       - id: edit-profile
         type: MenuLink
         pageId: edit-profile
@@ -75,6 +81,7 @@ menus:
 
 pages:
   - _ref: pages/404/404.yaml
+  - _ref: pages/connections/connections.yaml
   - _ref: pages/home/home.yaml
   - _ref: pages/login/login.yaml
   - _ref: pages/login-callback/login-callback.yaml
