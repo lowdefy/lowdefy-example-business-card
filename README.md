@@ -43,4 +43,4 @@ To use this example, you'll first need to configure a LinkedIn application for a
 
 ## ⚖️ Licence
 
-[MIT](https://github.com/lowdefy/lowdefy-example-auth-email/blob/main/LICENSE)
+[MIT](https://github.com/lowdefy/lowdefy-example-business-card/blob/main/LICENSE)
