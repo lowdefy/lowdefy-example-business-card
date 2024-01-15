@@ -14,7 +14,7 @@ blocks:
             - '6px solid '
             - _if_none:
                 - _var:
-                    name: color
+                    key: color
                     default:
                       _user: profile.color
                 - '#438ef7'

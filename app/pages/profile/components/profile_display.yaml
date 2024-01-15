@@ -20,7 +20,7 @@ blocks:
             - '6px solid '
             - _if_none:
                 - _var:
-                    name: color
+                    key: color
                     default:
                       _request: fetch_profile.0.color
                 - '#438ef7'

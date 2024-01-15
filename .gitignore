@@ -1,0 +1,9 @@
+.DS_Store
+**/.lowdefy/**
+**/.serverless/**
+**/.env
+**/node_modules/**
+**/dist/**
+!lowdefy/.lowdefy/cli.json
+**/coverage/**
+/auth0/globalConfig.json

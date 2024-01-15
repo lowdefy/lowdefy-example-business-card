@@ -21,11 +21,9 @@
     "dist/*"
   ],
   "scripts": {
-    "build": "yarn swc",
+    "build": "swc src --out-dir dist --config-file ../../.swcrc --delete-dir-on-start --copy-files",
     "clean": "rm -rf dist",
-    "copyfiles": "copyfiles -u 1 \"./src/**/*\" dist -e \"./src/**/*.js\" -e \"./src/**/*.yaml\" -e \"./src/**/*.snap\"",
-    "prepare": "yarn build",
-    "swc": "swc src --out-dir dist --delete-dir-on-start && yarn copyfiles"
+    "prepare": "pnpm build"
   },
   "dependencies": {
     "@lowdefy/block-utils": "~4.0.0-alpha.22",
