@@ -1,14 +1,7 @@
 lowdefy: 4.0.1
 
-# config:
-#   homePageId: home
-#   theme:
-#     lessVariables:
-#       "@primary-color": "#438ef7"
-#       "@border-radius-base": 6px
-#       "@border-radius-sm": 4px
-#       "@border-color-base": "#69c0ff"
-#       "border-width-base": 2px
+config:
+  homePageId: home
 
 plugins:
   - name: '@lowdefy/plugin-business-cards'
