@@ -6,11 +6,11 @@ style:
   margin: auto
 requests:
   _var:
-    name: requests
+    key: requests
     default: []
 events:
   _var:
-    name: events
+    key: events
     default: {}
 blocks:
   - id: color_backdrop
@@ -19,7 +19,7 @@ blocks:
       backgroundColor:
         _if_none:
           - _var:
-              name: color
+              key: color
               default:
                 _user: profile.color
           - '#438ef7'
@@ -29,7 +29,7 @@ blocks:
     type: Button
     visible:
       _var:
-        name: menu
+        key: menu
         default: true
     style:
       textAlign: right
@@ -51,7 +51,7 @@ blocks:
     visible:
       _not:
         _var:
-          name: menu
+          key: menu
           default: true
     style:
       height: 80px
@@ -62,7 +62,7 @@ blocks:
       minHeight: 78vh
     blocks:
       _var:
-        name: blocks
+        key: blocks
         default: []
 
   - id: footer

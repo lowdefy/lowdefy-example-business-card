@@ -1,18 +1,13 @@
-lowdefy: 4.0.0-alpha.23
+lowdefy: 4.0.1
 
 config:
   homePageId: home
-  theme:
-    lessVariables:
-      '@primary-color': '#438ef7'
-      '@border-radius-base': 6px
-      '@border-radius-sm': 4px
-      '@border-color-base': '#69c0ff'
-      'border-width-base': 2px
 
 plugins:
   - name: '@lowdefy/plugin-business-cards'
-    version: 'file:./plugins/plugin-business-cards'
+    version: 'workspace:*'
+  - name: '@lowdefy/community-plugin-mongodb'
+    version: '1.4.1'
 
 auth:
   theme:
@@ -23,7 +18,7 @@ auth:
     profile: user.profile
   adapter:
     id: mdb_adapter
-    type: MongoDBAdapter
+    type: MultiAppMongoDBAdapter
     properties:
       databaseUri:
         _secret: MONGODB_URI
@@ -35,6 +30,10 @@ auth:
           _secret: LINKEDIN_CLIENT_ID
         clientSecret:
           _secret: LINKEDIN_CLIENT_SECRET
+        # authorization:
+        #   params:
+        #     scope: r_liteprofile
+
   pages:
     public:
       - profile
